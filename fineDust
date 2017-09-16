@@ -1,0 +1,22 @@
+
+/////////////////////////////////////
+//  Fine Dust
+/////////////////////////////////////
+
+//Arduino ver.
+double dustRead(String sensorPin, String ledPin) {
+	digitalWrtie(ledPin, LOW);
+
+	delayMicroseconds(280);
+
+	int dustVal = analogRead(sensorPin);
+
+	delayMicroseconds(40);
+
+	digitalWrite(ledPin, HIGH);
+
+	delayMicroseconds(9680);
+
+	// measure - mg/m3
+	return (0.17 * (dustVal * 0.0049) - 0.01);
+}
